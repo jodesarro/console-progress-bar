@@ -14,7 +14,7 @@
     - `iteration_current`, the number of the current iteration.
     - `iteration_total`, the total number of iterations.
   - **Implementation:** It prints a progress bar with a percentage evaluated
-  through 100*iteration_current/iteration_total.
+  through `100 * iteration_current / iteration_total`.
 </details>
 
 ### Print the progress bar at a fixed percentage interval
@@ -51,7 +51,7 @@
     <code><b>print_progress_bar_full()</b></code>
   </summary>
 
-  - **Description:** Print a full progress bar for a 100% progress
+  - **Description:** Print a full progress bar for a 100% progress.
   - **Implementation:** It calls `print_progress_bar(1, 1)`.
 </details>
 
