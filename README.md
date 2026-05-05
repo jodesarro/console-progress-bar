@@ -87,7 +87,9 @@ int main() {
   }
 
   /* Printing a progress of 100% */
-  print_progress_bar_empty();
+  print_progress_bar_full();
+
+  return 0;
 }
 ```
 
