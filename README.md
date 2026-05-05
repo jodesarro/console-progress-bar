@@ -9,7 +9,7 @@
     <code><b>print_progress_bar(iteration_current, iteration_total)</b></code>
   </summary>
 
-  - **Description:** Print the progress bar for an iteration process.
+  - **Description:** Print a progress bar for an iteration process.
   - **Parameters:**
     - `iteration_current`, the number of the current iteration.
     - `iteration_total`, the total number of iterations.
@@ -24,7 +24,7 @@
     <code><b>print_progress_bar_every_percent(iteration_current, iteration_total, percent)</b></code>
   </summary>
 
-  - **Description:** Print the progress bar at a fixed percentage interval.
+  - **Description:** Print a progress bar at a fixed percentage interval.
   - **Parameters:**
     - `iteration_current`, the number of the current iteration.
     - `iteration_total`, the total number of iterations.

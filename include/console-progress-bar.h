@@ -13,6 +13,16 @@
 
 #include <stdio.h>
 
+/*
+  Print a progress bar for an iteration process.
+
+  Parameters:
+  - iteration_current, the number of the current iteration.
+  - iteration_total, the total number of iterations.
+
+  Implementation: It prints a progress bar with a percentage evaluated through
+  100 * iteration_current / iteration_total.
+*/
 static inline void print_progress_bar(long int iteration_current,
                                       long int iteration_total) {
   if (iteration_current == 0) {
@@ -36,6 +46,17 @@ static inline void print_progress_bar(long int iteration_current,
   }
 }
 
+/*
+  Print a progress bar at a fixed percentage interval.
+
+  Parameters:
+  - iteration_current, the number of the current iteration.
+  - iteration_total, the total number of iterations.
+  - percent, the percentage interval.
+
+  Implementation: It calls print_progress_bar(iteration_current,
+  iteration_total) at every percent of percentage.
+*/
 static inline void print_progress_bar_every_percent(long int iteration_current,
                                                     long int iteration_total,
                                                     int percent) {
@@ -45,8 +66,18 @@ static inline void print_progress_bar_every_percent(long int iteration_current,
   }
 }
 
+/*
+  Print an empty progress bar for a 0% progress.
+
+  Implementation: It calls print_progress_bar(0, 0).
+*/
 static inline void print_progress_bar_empty() { print_progress_bar(0, 0); }
 
+/*
+  Print a full progress bar for a 100% progress.
+
+  Implementation: It calls print_progress_bar(1, 1).
+*/
 static inline void print_progress_bar_full() { print_progress_bar(1, 1); }
 
 #endif /* CONSOLE_PROGRESS_BAR_H */
