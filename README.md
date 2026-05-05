@@ -1,117 +1,107 @@
-# Console Progress Bar library: A C++ library for printing the progress of numeric iterations on the console
+# Console Progress Bar: A C code for printing the progress of numeric iterations on the console
 
-<p align="center" width="100%">
-    <img src="https://github.com/jodesarro/console-progress-bar-library/blob/main/illustration.gif?raw=true">
-</p>
+## Available features
 
-## Available functions
+### Print the progress bar
 
-### Printing the progress
-```
-void print(const unsigned int &current_position, const unsigned int &max_position)
-```
+<details>
+  <summary>
+    <code><b>print_progress_bar(iteration_current, iteration_total)</b></code>
+  </summary>
 
-### Printing a progress of 100%
-```
-void print_full()
-```
+  - **Description:** Print the progress bar for an iteration process.
+  - **Parameters:**
+    - `iteration_current`, the number of the current iteration.
+    - `iteration_total`, the total number of iterations.
+  - **Implementation:** It prints a progress bar with a percentage evaluated
+  through 100*iteration_current/iteration_total.
+</details>
 
-### Printing a progress of 0%
-```
-void print_empty()
-```
+### Print the progress bar at a fixed percentage interval
 
-### Get the percentage of the current progress
-```
-double get_current_percentage()
-```
+<details>
+  <summary>
+    <code><b>print_progress_bar_every_percent(iteration_current, iteration_total, percent)</b></code>
+  </summary>
 
-### Erasing the progress bar out of the console
-```
-void erase()
-```
+  - **Description:** Print the progress bar at a fixed percentage interval.
+  - **Parameters:**
+    - `iteration_current`, the number of the current iteration.
+    - `iteration_total`, the total number of iterations.
+    - `percent`, the percentage interval.
+  - **Implementation:** It calls `print_progress_bar(iteration_current, iteration_total)`
+  at every `percent` of percentage.
+</details>
 
-### Styling
+### Print a progress of 0%
 
-The implementation of the progress bar has a default style of the type `Progress: [=======   ] 70.00%`.
-The default style may be changed as desired through the functions listed below.
+<details>
+  <summary>
+    <code><b>print_progress_bar_empty()</b></code>
+  </summary>
 
-#### Setting the bar size
-```
-void set_bar_size(unsigned int bar_size)
-```
+  - **Description:** Print an empty progress bar for a 0% progress.
+  - **Implementation:** It calls `print_progress_bar(0, 0)`.
+</details>
 
-#### Setting the bar delimiters
-```
-void set_bar_delimiters(std::string left_delimiter_char, std::string right_delimiter_char)
-```
+### Print a progress of 100%
 
-#### Setting the bar fillers
-```
-void set_bar_fillers(std::string filler_char, std::string blanker_char)
-```
+<details>
+  <summary>
+    <code><b>print_progress_bar_full()</b></code>
+  </summary>
 
-#### Note
-
-Notice that although `filler_char`, `blanker_char`, `left_delimiter_char` and `right_delimiter_char` are declared as `std::string`, each one must be a single character that occupies a single space on the console, otherwise they will be restored to the default style. In particular, `left_delimiter_char` and `right_delimiter_char` may be an empty string (`""`).
-Additionally, the value of `bar_size` should be chosen such that the total size of the progress bar does not exceed the width of the console.
+  - **Description:** Print a full progress bar for a 100% progress
+  - **Implementation:** It calls `print_progress_bar(1, 1)`.
+</details>
 
 ## How to use
 
-The library is in a header-only library style, i.e., there is nothing to build, you only have to include the <a href="console-progress-bar-library.hpp">*console-progress-bar-library.hpp*</a> file into your project.
+This code is header‑only, meaning there is nothing to build.
+
+You only need to paste all the content of the
+[include](include/) folder inside the include folder of your project (if you do not have an include
+folder in your project, paste the content inside the root folder of your
+project).
+
+Finally, just write `#include "console-progress-bar.h"` at the very
+beginning of your code and you shall be ready to use the functions.
 
 ## A simple example
 
 ### Input
 
 ```
-#include <iostream>
-#include <unistd.h> // Required for 'sleep()'
-#include "console-progress-bar-library.hpp"
+#include "../include/console-progress-bar.h"
+#include <unistd.h> /* Required for sleep() */
 
-int main()
-{
-  // Creating the object my_progress
-  console_progress_bar my_progress;
+int main() {
 
-  // Styling the progress bar
-  my_progress.set_bar_size(10);
-  my_progress.set_bar_fillers("█", "░");
-  my_progress.set_bar_delimiters("", "");
+  /* Printing a progress of 0% */
+  print_progress_bar_empty();
 
-  // Required for printing Unicode chars such as █ and ░ on Windows cmd
-  system("chcp 65001 > nul");
-
-  // Printing a progress of 0%
-  my_progress.print_empty();
-
-  // Loop for printing the progress after each iteration
-  for (int i=0; i<=98; i++)
-  {
-      sleep(1); // Waiting one second, simulating a slow process
-      my_progress.print(i,17); // Printing the progress
+  /* Loop for printing the progress after each iteration */
+  for (int i = 0; i <= 98; i++) {
+    sleep(1); /* Waiting one second, simulating a slow process */
+    print_progress_bar(i, 100); /* Printing the progress */
   }
 
-  // Printing a progress of 100%
-  my_progress.print_full();
-
-  // Erasing the progress bar out of the console
-  my_progress.erase();
-
+  /* Printing a progress of 100% */
+  print_progress_bar_empty();
 }
 ```
 
-### Output
+## Some C details
 
-![Illustration](https://github.com/jodesarro/console-progress-bar-library/blob/main/example.gif?raw=true)
-
-### Some interesting Unicode characters for progress bars
-█, ░, ⚫, ⚪, ■, ▰, ▱, ...
+In this project, the implementation is carried out in terms of the C99
+standards.
 
 ## Authorship
 
-The codes and routines were developed and are updated by <a href="https://www.researchgate.net/profile/Jhonas-de-Sarro">Jhonas O. de Sarro</a> ([@jodesarro]( https://github.com/jodesarro )).
+The codes and routines was developed and is updated by
+<a href="https://www.researchgate.net/profile/Jhonas-de-Sarro">
+Jhonas O. de Sarro</a> ([@jodesarro](https://github.com/jodesarro)).
 
 ## Licensing
 
-This project is protected under <a href="LICENSE">MIT License</a>.
+This project is protected under [MIT License](LICENSE).
