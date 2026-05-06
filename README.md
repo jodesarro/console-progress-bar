@@ -51,8 +51,8 @@
     <code><b>print_progress_bar_full()</b></code>
   </summary>
 
-  - **Description:** Print a full progress bar for a 100% progress.
-  - **Implementation:** It calls `print_progress_bar(1, 1)`.
+  - **Description:** Print a full progress bar for a 100% progress followed by a line break.
+  - **Implementation:** It calls `print_progress_bar(1, 1)` and then prints a line break.
 </details>
 
 ## How to use
