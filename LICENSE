@@ -1,5 +1,6 @@
-Bessel Library: A C library with routines for computing Bessel functions
-<https://github.com/jodesarro/bessel-library>
+Console Progress Bar: A C code for printing the progress of numeric iterations
+on the console
+<https://github.com/jodesarro/console-progress-bar>
 
 MIT License
 
