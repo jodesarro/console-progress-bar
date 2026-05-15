@@ -55,6 +55,10 @@
   - **Implementation:** It calls `print_progress_bar(1, 1)` and then prints a line break.
 </details>
 
+## Macros
+
+- `CONSOLE_PROGRESS_BAR_VERSION`: Call this macro to get the date of the last update.
+
 ## How to use
 
 This code is header‑only, meaning there is nothing to build.
